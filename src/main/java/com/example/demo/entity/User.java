@@ -23,13 +23,17 @@ public class User {
 		this.name = name;
 	}
 	
-	public User(String gender, String name) {
+	public User(Long id,String gender, String name) {
+		this.id = id;
 		this.gender = gender;
 		this.name = name;
 	}
 	
 	public String toString() {
 		return this.name + " " + this.gender;
+	}
+	public User() {
+		super();
 	}
 	
 	  
