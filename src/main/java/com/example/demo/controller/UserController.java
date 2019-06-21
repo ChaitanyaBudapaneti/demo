@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,16 +15,27 @@ import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
 	UserService userService;
 	
-	@GetMapping("/")
-	public User retrieveByName() {
-		return userService.retrieveByName("chaitu");
+	@GetMapping("/name/{name}")
+	public User retrieveByName(@PathVariable("name") String userName) {
+		return userService.retrieveByName(userName);
 	}
 	
+	@GetMapping("/id/{id}")
+	public Optional<User> findById(@PathVariable("id") Long id) {
+		return userService.findById(id);
+	}
+	
+//	Optional<User> oUser = userRepo.findById(id);
+//	User user = null;
+//	if(oUser.isPresent()) {
+//		user = oUser.get();
+//	}
 	@PostMapping("/")
 	public String postexample() {
 		return "THIS IS A POST REQUEST";

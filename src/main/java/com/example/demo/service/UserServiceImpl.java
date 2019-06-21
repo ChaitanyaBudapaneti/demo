@@ -1,14 +1,18 @@
 package com.example.demo.service;
 
-import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
+import com.example.demo.repo.UserRepo;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
-	List <User> userList;
+	@Autowired
+	UserRepo userRepo;
+	
 	@Override
 	public User create(User user) {
 		// TODO Auto-generated method stub
@@ -17,8 +21,15 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User retrieveByName(String name) {
-		User user = new User("male", "john");
-		return user;
+		// here you need to call something that return u data from server
+		return null;
+	}
+	
+	@Override
+	public Optional<User> findById(Long id) {
+		// here you need to call something that return u data from server
+
+		return userRepo.findById(id);
 	}
 
 	@Override
