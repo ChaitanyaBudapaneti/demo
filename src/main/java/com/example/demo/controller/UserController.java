@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,9 +37,10 @@ public class UserController {
 //	if(oUser.isPresent()) {
 //		user = oUser.get();
 //	}
-	@PostMapping("/")
-	public String postexample() {
-		return "THIS IS A POST REQUEST";
+	@PostMapping("")
+	public User postexample(@RequestBody User user) {
+		userService.create(user);
+		return user;
 	}
 	
 	@RequestMapping(value="/", method = RequestMethod.PUT)
