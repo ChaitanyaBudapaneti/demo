@@ -27,8 +27,15 @@ public class UserController {
 		return userService.retrieveByName(userName);
 	}
 	
-	@GetMapping("/id/{id}")
-	public Optional<User> findById(@PathVariable("id") Long id) {
+	
+	@GetMapping("/name/gender/{name}/{gender}")
+	public User retrieveByName(@PathVariable("name") String name, @PathVariable("gender") String gender) {
+		return userService.retrieveByNameAndGender(name, gender);
+	}
+	
+	@GetMapping("/id/{id}/{name}")
+	public Optional<User> findById(@PathVariable("id") Long id, @PathVariable("name") String name) {
+		System.out.println(id + "  "+ name);
 		return userService.findById(id);
 	}
 	

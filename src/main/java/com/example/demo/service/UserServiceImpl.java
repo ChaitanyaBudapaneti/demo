@@ -22,13 +22,15 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User retrieveByName(String name) {
 		// here you need to call something that return u data from server
-		return null;
+//		return userRepo.findByName(name);
+
+		return userRepo.userByName(name);
 	}
 	
 	@Override
 	public Optional<User> findById(Long id) {
 		// here you need to call something that return u data from server
-
+		
 		return userRepo.findById(id);
 	}
 
@@ -42,6 +44,14 @@ public class UserServiceImpl implements UserService{
 	public void deleteByName(String name) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public User retrieveByNameAndGender(String name, String gender) {
+		
+//		return userRepo.findByNameAndGender(name, gender);
+		return userRepo.userByNameAndGender(name, gender);
+
 	}
 
 }
