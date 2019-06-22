@@ -1,2 +1,0 @@
-INSERT INTO USER VALUES (10001,'male', 'Ram');
-INSERT INTO USER VALUES (10002,'male', 'Krishna');
